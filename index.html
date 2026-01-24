@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Quiz Battle! 🎮</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="confetti-container" id="confetti"></div>
+    
+    <div class="wrap">
+      <header class="header">
+        <h1>⚡ JavaScript Quiz Battle!</h1>
+        <p class="tagline">5 Teams. 1 Winner. May the best coders win! 🏆</p>
+      </header>
+
+      <!-- Setup Panel -->
+      <div class="card setup-card">
+        <h2>🎛️ Game Controls</h2>
+        <div class="controls-grid">
+          <div class="control-item">
+            <label>Round Time</label>
+            <div class="input-group">
+              <input id="roundTime" type="number" value="30" min="10" max="120" />
+              <span>seconds</span>
+            </div>
+          </div>
+          <div class="control-item">
+            <label>Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy 🟢</option>
+              <option value="medium" selected>Medium 🟡</option>
+              <option value="hard">Hard 🔴</option>
+              <option value="mixed">Mixed 🎲</option>
+            </select>
+          </div>
+          <div class="control-item">
+            <button id="resetAllBtn" class="btn btn-danger">🔄 Reset All</button>
+          </div>
+        </div>
+        
+        <div class="game-status">
+          <div class="status-badge timer-badge">
+            <span class="status-label">⏱️ Time</span>
+            <span class="status-value" id="timeLeft">30</span>
+          </div>
+          <div class="status-badge group-badge">
+            <span class="status-label">🎯 Playing</span>
+            <span class="status-value" id="currentGroupLabel">Select a team</span>
+          </div>
+          <div class="status-badge streak-badge">
+            <span class="status-label">🔥 Streak</span>
+            <span class="status-value" id="streakCount">0</span>
+          </div>
+        </div>
+        
+        <div class="timer-bar-container">
+          <div class="timer-bar" id="timerBar"></div>
+        </div>
+      </div>
+
+      <!-- Teams Selection -->
+      <div class="card teams-card">
+        <h2>👥 Select Team to Play</h2>
+        <div class="teams-grid" id="groupsRow"></div>
+        <p class="hint">Click a team button to start their timed round!</p>
+      </div>
+
+      <!-- Quiz Area -->
+      <div class="card quiz-card" id="quizCard">
+        <div class="question-header">
+          <span class="question-number" id="questionNum">Q1</span>
+          <span class="difficulty-tag" id="difficultyTag">Medium</span>
+        </div>
+        <h2 class="question-text" id="qText">👆 Pick a team to start the quiz!</h2>
+        <div class="choices-grid" id="choices"></div>
+        <div class="feedback-area">
+          <p id="feedback"></p>
+          <p id="celebrate" class="celebrate"></p>
+        </div>
+      </div>
+
+      <!-- Live Scoreboard -->
+      <div class="card scoreboard-card">
+        <h2>🏆 Live Scoreboard</h2>
+        <div id="scoreboard"></div>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="card stats-card">
+        <h2>📊 Game Stats</h2>
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-item">
+            <span class="stat-value" id="totalQuestions">0</span>
+            <span class="stat-label">Questions Asked</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="totalCorrect">0</span>
+            <span class="stat-label">Correct Answers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="accuracy">0%</span>
+            <span class="stat-label">Overall Accuracy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
