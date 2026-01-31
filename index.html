@@ -1,113 +1,308 @@
 <!DOCTYPE html>
+<!-- 
+  ============================================================================
+  HTML FILE - The Structure of Our Web Page
+  ============================================================================
+  
+  HTML (HyperText Markup Language) defines the STRUCTURE and CONTENT of a webpage.
+  Think of it as the skeleton/bones of a website.
+  
+  KEY CONCEPTS IN THIS FILE:
+  - DOCTYPE declaration
+  - HTML elements and tags
+  - Head vs Body sections
+  - Semantic HTML
+  - Attributes (id, class, type, value)
+  - Nesting elements
+  - Links to external files (CSS, JS)
+  
+  ============================================================================
+-->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JavaScript Quiz Battle! 🎮</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<!-- 
+  The <html> tag is the ROOT element - everything goes inside it
+  lang="en" is an ATTRIBUTE that tells browsers this page is in English
+  Attributes provide extra information about elements
+-->
 
-  <body>
-    <div class="confetti-container" id="confetti"></div>
+<head>
+  <!-- 
+    The <head> section contains META information about the page
+    This content is NOT visible on the page itself
+    It includes: title, character encoding, links to CSS/JS files, etc.
+  -->
+  
+  <!-- 
+    <meta charset="UTF-8"> 
+    Sets the character encoding to UTF-8, which supports most languages and emojis
+    Without this, special characters might display incorrectly
+  -->
+  <meta charset="UTF-8" />
+  
+  <!-- 
+    <meta name="viewport" ...>
+    Makes the page responsive on mobile devices
+    width=device-width: page width matches the device's screen width
+    initial-scale=1.0: no zoom applied initially
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- 
+    <title> sets the text shown in the browser tab
+    Also used by search engines and when bookmarking
+  -->
+  <title>Web Dev Quiz Battle! 🎮</title>
+  
+  <!-- 
+    <link> connects external files to our HTML
+    rel="stylesheet" tells the browser this is a CSS file
+    href="style.css" is the path to the file
+  -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- 
+    The <body> section contains ALL visible content
+    Everything users see and interact with goes here
+  -->
+  
+  <!-- 
+    <div> is a generic container element (division)
+    Used to group related content together
+    id="confetti" gives this element a unique identifier
+    We can target it in CSS (#confetti) or JavaScript (getElementById)
+  -->
+  <div class="confetti-container" id="confetti"></div>
+  
+  <!-- 
+    class="wrap" applies CSS styling to this container
+    Classes can be reused on multiple elements (unlike IDs which must be unique)
+  -->
+  <div class="wrap">
     
-    <div class="wrap">
-      <header class="header">
-        <h1>⚡ JavaScript Quiz Battle!</h1>
-        <p class="tagline">5 Teams. 1 Winner. May the best coders win! 🏆</p>
-      </header>
+    <!-- 
+      <header> is a SEMANTIC element - it describes its purpose
+      Semantic elements help with accessibility and SEO
+      Other semantic elements: <nav>, <main>, <section>, <article>, <footer>
+    -->
+    <header class="header">
+      <!-- 
+        <h1> is the main heading (most important)
+        Headings go from <h1> (biggest) to <h6> (smallest)
+        Each page should have ONE <h1> for accessibility
+      -->
+      <h1>⚡ Web Dev Quiz Battle!</h1>
+      
+      <!-- 
+        <p> is a paragraph element for text content
+        class="tagline" lets us style this specific paragraph
+      -->
+      <p class="tagline">HTML, CSS & JavaScript - 5 Teams. 1 Winner. 🏆</p>
+    </header>
 
-      <!-- Setup Panel -->
-      <div class="card setup-card">
-        <h2>🎛️ Game Controls</h2>
-        <div class="controls-grid">
-          <div class="control-item">
-            <label>Round Time</label>
-            <div class="input-group">
-              <input id="roundTime" type="number" value="30" min="10" max="120" />
-              <span>seconds</span>
-            </div>
-          </div>
-          <div class="control-item">
-            <label>Difficulty</label>
-            <select id="difficulty">
-              <option value="easy">Easy 🟢</option>
-              <option value="medium" selected>Medium 🟡</option>
-              <option value="hard">Hard 🔴</option>
-              <option value="mixed">Mixed 🎲</option>
-            </select>
-          </div>
-          <div class="control-item">
-            <button id="resetAllBtn" class="btn btn-danger">🔄 Reset All</button>
+    <!-- ==================== SETUP PANEL ==================== -->
+    <!-- 
+      This section contains game controls
+      Multiple classes can be applied: class="card setup-card"
+    -->
+    <div class="card setup-card">
+      <h2>🎛️ Game Controls</h2>
+      
+      <div class="controls-grid">
+        <!-- Round Time Control -->
+        <div class="control-item">
+          <!-- 
+            <label> describes what an input is for
+            Great for accessibility - screen readers read labels aloud
+          -->
+          <label>Round Time</label>
+          <div class="input-group">
+            <!-- 
+              <input> creates an interactive form field
+              type="number" only allows numeric input
+              id="roundTime" lets JavaScript access this element
+              value="30" sets the default value
+              min="10" max="120" set allowed range
+            -->
+            <input id="roundTime" type="number" value="30" min="10" max="120" />
+            <span>seconds</span>
           </div>
         </div>
         
-        <div class="game-status">
-          <div class="status-badge timer-badge">
-            <span class="status-label">⏱️ Time</span>
-            <span class="status-value" id="timeLeft">30</span>
-          </div>
-          <div class="status-badge group-badge">
-            <span class="status-label">🎯 Playing</span>
-            <span class="status-value" id="currentGroupLabel">Select a team</span>
-          </div>
-          <div class="status-badge streak-badge">
-            <span class="status-label">🔥 Streak</span>
-            <span class="status-value" id="streakCount">0</span>
-          </div>
+        <!-- Topic Selection -->
+        <div class="control-item">
+          <label>Topic</label>
+          <!-- 
+            <select> creates a dropdown menu
+            Each <option> is a choice in the dropdown
+            value="" is what JavaScript receives when selected
+            The text between tags is what users see
+          -->
+          <select id="topic">
+            <option value="all" selected>All Topics 🎲</option>
+            <option value="html">HTML 📄</option>
+            <option value="css">CSS 🎨</option>
+            <option value="js">JavaScript ⚡</option>
+          </select>
         </div>
         
-        <div class="timer-bar-container">
-          <div class="timer-bar" id="timerBar"></div>
+        <!-- Reset Button -->
+        <div class="control-item">
+          <!-- 
+            <button> creates a clickable button
+            We'll add a click event listener in JavaScript
+          -->
+          <button id="resetAllBtn" class="btn btn-danger">🔄 Reset All</button>
         </div>
       </div>
-
-      <!-- Teams Selection -->
-      <div class="card teams-card">
-        <h2>👥 Select Team to Play</h2>
-        <div class="teams-grid" id="groupsRow"></div>
-        <p class="hint">Click a team button to start their timed round!</p>
-      </div>
-
-      <!-- Quiz Area -->
-      <div class="card quiz-card" id="quizCard">
-        <div class="question-header">
-          <span class="question-number" id="questionNum">Q1</span>
-          <span class="difficulty-tag" id="difficultyTag">Medium</span>
+      
+      <!-- Game Status Display -->
+      <div class="game-status">
+        <!-- 
+          These display current game information
+          <span> is an inline container (doesn't create line breaks)
+          <strong> makes text bold AND indicates importance
+        -->
+        <div class="status-badge timer-badge">
+          <span class="status-label">⏱️ Time</span>
+          <span class="status-value" id="timeLeft">30</span>
         </div>
-        <h2 class="question-text" id="qText">👆 Pick a team to start the quiz!</h2>
-        <div class="choices-grid" id="choices"></div>
-        <div class="feedback-area">
-          <p id="feedback"></p>
-          <p id="celebrate" class="celebrate"></p>
+        <div class="status-badge group-badge">
+          <span class="status-label">🎯 Playing</span>
+          <span class="status-value" id="currentGroupLabel">Select a team</span>
+        </div>
+        <div class="status-badge streak-badge">
+          <span class="status-label">🔥 Streak</span>
+          <span class="status-value" id="streakCount">0</span>
         </div>
       </div>
-
-      <!-- Live Scoreboard -->
-      <div class="card scoreboard-card">
-        <h2>🏆 Live Scoreboard</h2>
-        <div id="scoreboard"></div>
-      </div>
-
-      <!-- Quick Stats -->
-      <div class="card stats-card">
-        <h2>📊 Game Stats</h2>
-        <div class="stats-grid" id="statsGrid">
-          <div class="stat-item">
-            <span class="stat-value" id="totalQuestions">0</span>
-            <span class="stat-label">Questions Asked</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value" id="totalCorrect">0</span>
-            <span class="stat-label">Correct Answers</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-value" id="accuracy">0%</span>
-            <span class="stat-label">Overall Accuracy</span>
-          </div>
-        </div>
+      
+      <!-- Timer Progress Bar -->
+      <div class="timer-bar-container">
+        <!-- 
+          Empty div that we'll resize with JavaScript
+          CSS width property will be changed dynamically
+        -->
+        <div class="timer-bar" id="timerBar"></div>
       </div>
     </div>
 
-    <script src="app.js"></script>
-  </body>
+    <!-- ==================== TEAM SELECTION ==================== -->
+    <div class="card teams-card">
+      <h2>👥 Select Team to Play</h2>
+      <!-- 
+        Empty container - JavaScript will add team buttons here
+        Using JavaScript to create elements is called "dynamic rendering"
+      -->
+      <div class="teams-grid" id="groupsRow"></div>
+      <p class="hint">Click a team button to start their timed round!</p>
+    </div>
+
+    <!-- ==================== QUIZ AREA ==================== -->
+    <div class="card quiz-card" id="quizCard">
+      <div class="question-header">
+        <span class="question-number" id="questionNum">Q1</span>
+        <span class="topic-tag" id="topicTag">Ready</span>
+      </div>
+      
+      <!-- Question text will be inserted by JavaScript -->
+      <h2 class="question-text" id="qText">👆 Pick a team to start the quiz!</h2>
+      
+      <!-- Answer choice buttons will be created by JavaScript -->
+      <div class="choices-grid" id="choices"></div>
+      
+      <!-- Feedback messages -->
+      <div class="feedback-area">
+        <p id="feedback"></p>
+        <p id="celebrate" class="celebrate"></p>
+      </div>
+    </div>
+
+    <!-- ==================== SCOREBOARD ==================== -->
+    <div class="card scoreboard-card">
+      <h2>🏆 Live Scoreboard</h2>
+      <!-- JavaScript will populate this with team rankings -->
+      <div id="scoreboard"></div>
+    </div>
+
+    <!-- ==================== GAME STATS ==================== -->
+    <div class="card stats-card">
+      <h2>📊 Game Stats</h2>
+      <div class="stats-grid" id="statsGrid">
+        <div class="stat-item">
+          <span class="stat-value" id="totalQuestions">0</span>
+          <span class="stat-label">Questions Asked</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="totalCorrect">0</span>
+          <span class="stat-label">Correct Answers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value" id="accuracy">0%</span>
+          <span class="stat-label">Overall Accuracy</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <!-- End of .wrap container -->
+
+  <!-- 
+    <script> loads JavaScript files
+    Placed at END of body so HTML loads first
+    This ensures all elements exist before JavaScript tries to access them
+    Alternative: use "defer" attribute in <head>
+  -->
+  <script src="app.js"></script>
+</body>
+
 </html>
+<!-- 
+  ============================================================================
+  HTML ELEMENTS USED IN THIS FILE:
+  ============================================================================
+  
+  STRUCTURAL:
+  - <!DOCTYPE html> : Declares this is HTML5
+  - <html>         : Root element
+  - <head>         : Metadata container
+  - <body>         : Visible content container
+  
+  METADATA:
+  - <meta>         : Page metadata (charset, viewport)
+  - <title>        : Browser tab title
+  - <link>         : Connect external files
+  - <script>       : Load JavaScript
+  
+  TEXT CONTENT:
+  - <h1> to <h6>   : Headings (h1 = most important)
+  - <p>            : Paragraphs
+  - <span>         : Inline text container
+  - <strong>       : Important/bold text
+  
+  CONTAINERS:
+  - <div>          : Generic block container
+  - <header>       : Page/section header (semantic)
+  
+  FORMS/INPUT:
+  - <input>        : User input field
+  - <select>       : Dropdown menu
+  - <option>       : Dropdown choice
+  - <button>       : Clickable button
+  - <label>        : Input description
+  
+  ATTRIBUTES USED:
+  - id=""          : Unique identifier (for CSS # and JS getElementById)
+  - class=""       : Reusable styling hook (for CSS . selector)
+  - type=""        : Specifies input type
+  - value=""       : Default/current value
+  - min="" max=""  : Number range limits
+  - selected       : Pre-selected option
+  - lang=""        : Language specification
+  - rel=""         : Relationship type
+  - href=""        : Hyperlink reference
+  - src=""         : Source file path
+  
+  ============================================================================
+-->

@@ -1,53 +1,202 @@
-/* ===== CSS Variables ===== */
+/* 
+  ============================================================================
+  CSS FILE - The Style and Appearance of Our Web Page
+  ============================================================================
+  
+  CSS (Cascading Style Sheets) controls HOW elements LOOK.
+  Think of it as the skin, clothes, and makeup of a website.
+  
+  KEY CONCEPTS IN THIS FILE:
+  - Selectors (how to target elements)
+  - Properties and values
+  - The box model (margin, border, padding, content)
+  - Colors (hex, rgb, named colors)
+  - Units (px, %, rem, vh)
+  - Flexbox and Grid layouts
+  - Transitions and animations
+  - CSS Variables (custom properties)
+  - Pseudo-classes (:hover, :focus, :disabled)
+  - Media queries (responsive design)
+  
+  ============================================================================
+*/
+
+
+/* 
+  ============================================================================
+  SECTION 1: CSS VARIABLES (Custom Properties)
+  ============================================================================
+  
+  CSS Variables let us define reusable values
+  Defined with -- prefix inside :root (the document root)
+  Used with var(--variable-name)
+  
+  Benefits:
+  - Change one value to update everywhere
+  - Makes code more readable
+  - Easy theming (could switch all colors at once)
+  
+  ============================================================================
+*/
+
 :root {
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --success: #10b981;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --bg: #0f172a;
-  --card-bg: #1e293b;
-  --card-border: #334155;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
+  /* 
+    :root is a pseudo-class that selects the document root (<html>)
+    Variables defined here are available EVERYWHERE in the CSS
+  */
+  
+  /* COLOR PALETTE */
+  --primary: #6366f1;        /* Main brand color (purple-blue) */
+  --primary-dark: #4f46e5;   /* Darker shade for hover states */
+  --success: #10b981;        /* Green for correct/success */
+  --danger: #ef4444;         /* Red for wrong/error */
+  --warning: #f59e0b;        /* Orange/yellow for warnings */
+  
+  /* BACKGROUND COLORS */
+  --bg: #0f172a;             /* Main page background (dark blue) */
+  --card-bg: #1e293b;        /* Card/container background */
+  --card-border: #334155;    /* Border color for cards */
+  
+  /* TEXT COLORS */
+  --text: #f1f5f9;           /* Main text color (light gray) */
+  --text-muted: #94a3b8;     /* Secondary/dimmed text */
+  
+  /* GRADIENTS - blend between two or more colors */
   --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  /* 
+    linear-gradient(angle, color1 position1, color2 position2)
+    135deg = diagonal direction
+    0% = start, 100% = end
+  */
 }
 
-/* ===== Reset & Base ===== */
+
+/* 
+  ============================================================================
+  SECTION 2: CSS RESET & BASE STYLES
+  ============================================================================
+  
+  Browsers have default styles that can be inconsistent
+  A CSS reset creates a consistent starting point
+  
+  ============================================================================
+*/
+
+/* 
+  The * selector selects ALL elements on the page
+  Use sparingly as it can impact performance
+*/
 * {
+  /* 
+    box-sizing: border-box makes sizing much easier
+    Width/height INCLUDE padding and border (not just content)
+    This is almost always what you want!
+  */
   box-sizing: border-box;
+  
+  /* Remove default margin and padding from all elements */
   margin: 0;
   padding: 0;
 }
 
+/* 
+  Body styles affect the entire visible page
+  This is where we set global defaults
+*/
 body {
+  /* 
+    font-family sets the typeface
+    List multiple fonts as fallbacks (left to right)
+    If first font isn't available, browser tries the next
+  */
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  
+  /* 
+    Background color using our CSS variable
+    var(--variable-name) retrieves the variable's value
+  */
   background: var(--bg);
+  
+  /* Text color */
   color: var(--text);
+  
+  /* 
+    min-height: 100vh ensures body is at least full viewport height
+    vh = viewport height (100vh = 100% of browser window height)
+  */
   min-height: 100vh;
+  
+  /* 
+    padding adds space INSIDE the element
+    24px on all four sides
+  */
   padding: 24px;
+  
+  /* 
+    line-height controls spacing between lines of text
+    1.5 = 150% of the font size (good for readability)
+  */
   line-height: 1.5;
 }
 
-/* ===== Layout ===== */
+
+/* 
+  ============================================================================
+  SECTION 3: LAYOUT - Main Container
+  ============================================================================
+  
+  Layout CSS controls how elements are positioned and sized
+  
+  ============================================================================
+*/
+
 .wrap {
+  /* 
+    max-width limits how wide the container can grow
+    Prevents content from stretching too wide on large screens
+  */
   max-width: 1000px;
+  
+  /* 
+    margin: 0 auto centers a block element horizontally
+    0 = top/bottom margin
+    auto = left/right margin (browser calculates equal margins)
+  */
   margin: 0 auto;
 }
 
 .header {
+  /* Centers text horizontally */
   text-align: center;
+  
+  /* 
+    margin-bottom adds space below the element
+    This creates separation from the content below
+  */
   margin-bottom: 24px;
 }
 
 .header h1 {
+  /* 
+    font-size: 2.5rem
+    rem = "root em" - relative to the root font size
+    More accessible than px because it scales with user preferences
+  */
   font-size: 2.5rem;
+  
+  /* 
+    These properties create a gradient text effect:
+    1. Set background to a gradient
+    2. Clip background to text shape
+    3. Make text color transparent so gradient shows through
+  */
   background: var(--gradient-1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  
   margin-bottom: 8px;
 }
 
@@ -56,18 +205,65 @@ body {
   font-size: 1.1rem;
 }
 
-/* ===== Cards ===== */
+
+/* 
+  ============================================================================
+  SECTION 4: CARDS - Reusable Container Component
+  ============================================================================
+  
+  Cards are a common UI pattern - contained boxes of related content
+  
+  ============================================================================
+*/
+
 .card {
   background: var(--card-bg);
+  
+  /* 
+    border: width style color
+    1px = thin line
+    solid = continuous line (vs dashed, dotted, etc.)
+  */
   border: 1px solid var(--card-border);
+  
+  /* 
+    border-radius rounds the corners
+    Higher values = more rounded (50% makes a circle)
+  */
   border-radius: 16px;
+  
+  /* Padding = space inside the border */
   padding: 24px;
+  
+  /* Margin = space outside the border */
   margin-bottom: 20px;
+  
+  /* 
+    transition creates smooth animations when properties change
+    transform 0.2s = animate transform changes over 0.2 seconds
+    Multiple properties separated by commas
+  */
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
+/* 
+  :hover is a PSEUDO-CLASS
+  Applies styles when the user hovers their mouse over the element
+  Other pseudo-classes: :focus, :active, :first-child, :last-child
+*/
 .card:hover {
+  /* 
+    transform moves/scales/rotates elements
+    translateY(-2px) moves the card up 2 pixels
+    Creates a "lifting" effect
+  */
   transform: translateY(-2px);
+  
+  /* 
+    box-shadow adds a shadow effect
+    Values: x-offset y-offset blur-radius spread-radius color
+    rgba() allows transparency (a = alpha, 0-1)
+  */
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -77,32 +273,87 @@ body {
   color: var(--text);
 }
 
-/* ===== Setup Controls ===== */
+
+/* 
+  ============================================================================
+  SECTION 5: CONTROLS & FORMS
+  ============================================================================
+  
+  Styling form elements like inputs, selects, and buttons
+  
+  ============================================================================
+*/
+
+/* 
+  CSS GRID is a powerful 2D layout system
+  Great for creating rows and columns
+*/
 .controls-grid {
+  /* 
+    display: grid enables CSS Grid layout
+  */
   display: grid;
+  
+  /* 
+    grid-template-columns defines column sizes
+    repeat(auto-fit, minmax(150px, 1fr)) is responsive:
+    - auto-fit: create as many columns as will fit
+    - minmax(150px, 1fr): each column is at least 150px, max 1fr
+    - 1fr = 1 fraction of available space
+  */
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  
+  /* gap sets spacing between grid items */
   gap: 16px;
+  
   margin-bottom: 20px;
 }
 
 .control-item {
+  /* 
+    display: flex enables Flexbox layout
+    Flexbox is great for 1D layouts (row OR column)
+  */
   display: flex;
+  
+  /* 
+    flex-direction: column stacks items vertically
+    Default is row (horizontal)
+  */
   flex-direction: column;
+  
+  /* gap works in Flexbox too! */
   gap: 8px;
 }
 
 .control-item label {
   font-size: 0.85rem;
   color: var(--text-muted);
+  
+  /* 
+    font-weight controls text thickness
+    400 = normal, 600 = semi-bold, 700 = bold
+  */
   font-weight: 600;
 }
 
 .input-group {
   display: flex;
+  
+  /* 
+    align-items controls alignment on the cross-axis
+    For flex-direction: row, cross-axis is vertical
+    center = vertically center items
+  */
   align-items: center;
+  
   gap: 8px;
 }
 
+/* 
+  Selecting multiple elements at once
+  Comma separates selectors - styles apply to both
+*/
 input, select {
   padding: 10px 14px;
   border-radius: 10px;
@@ -110,35 +361,74 @@ input, select {
   background: var(--bg);
   color: var(--text);
   font-size: 1rem;
+  
+  /* width: 100% makes element fill its container */
   width: 100%;
 }
 
+/* 
+  :focus pseudo-class applies when element is selected/focused
+  Important for keyboard navigation and accessibility
+*/
 input:focus, select:focus {
+  /* 
+    outline: none removes the default browser focus ring
+    BUT you should always provide an alternative focus indicator!
+  */
   outline: none;
+  
+  /* Custom focus indicator using border */
   border-color: var(--primary);
+  
+  /* 
+    box-shadow can create a "glow" effect for focus
+    0 0 0 3px = no offset, no blur, 3px spread
+  */
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
+/* 
+  Attribute selector: input[type="number"]
+  Selects only inputs where type attribute equals "number"
+*/
 input[type="number"] {
   width: 80px;
 }
 
-/* ===== Buttons ===== */
+
+/* 
+  ============================================================================
+  SECTION 6: BUTTONS
+  ============================================================================
+*/
+
 .btn {
   padding: 12px 20px;
   border-radius: 10px;
+  
+  /* border: none removes the default button border */
   border: none;
+  
   font-size: 1rem;
   font-weight: 600;
+  
+  /* cursor: pointer shows the hand icon on hover */
   cursor: pointer;
+  
+  /* Smooth transition for hover effects */
   transition: all 0.2s;
 }
 
 .btn:hover {
+  /* scale(1.02) makes element 2% bigger */
   transform: scale(1.02);
 }
 
+/* 
+  :active applies when element is being clicked/pressed
+*/
 .btn:active {
+  /* Slight shrink on click for tactile feedback */
   transform: scale(0.98);
 }
 
@@ -153,14 +443,27 @@ input[type="number"] {
 }
 
 .btn-danger:hover {
+  /* Darker red on hover */
   background: #dc2626;
 }
 
-/* ===== Game Status ===== */
+
+/* 
+  ============================================================================
+  SECTION 7: GAME STATUS BADGES
+  ============================================================================
+*/
+
 .game-status {
   display: flex;
   gap: 12px;
+  
+  /* 
+    flex-wrap: wrap allows items to wrap to next line
+    if they don't fit in one row
+  */
   flex-wrap: wrap;
+  
   margin-bottom: 16px;
 }
 
@@ -176,7 +479,14 @@ input[type="number"] {
 .status-label {
   font-size: 0.75rem;
   color: var(--text-muted);
+  
+  /* 
+    text-transform changes text case
+    uppercase = ALL CAPS
+  */
   text-transform: uppercase;
+  
+  /* letter-spacing adds space between letters */
   letter-spacing: 0.5px;
 }
 
@@ -185,6 +495,7 @@ input[type="number"] {
   font-weight: 700;
 }
 
+/* Different colors for different badges */
 .timer-badge .status-value {
   color: var(--warning);
 }
@@ -198,37 +509,73 @@ input[type="number"] {
   color: #f97316;
 }
 
-/* ===== Timer Bar ===== */
+
+/* 
+  ============================================================================
+  SECTION 8: TIMER BAR (Progress Bar)
+  ============================================================================
+*/
+
 .timer-bar-container {
   height: 8px;
   background: var(--bg);
   border-radius: 4px;
+  
+  /* 
+    overflow: hidden hides content that extends beyond the container
+    This clips the timer bar to the rounded corners
+  */
   overflow: hidden;
 }
 
 .timer-bar {
   height: 100%;
+  
+  /* width: 100% will be changed by JavaScript */
   width: 100%;
+  
   background: var(--gradient-3);
   border-radius: 4px;
+  
+  /* Smooth animation when width changes */
   transition: width 0.3s ease, background 0.3s ease;
 }
 
+/* Timer bar color states */
 .timer-bar.warning {
   background: var(--warning);
 }
 
 .timer-bar.danger {
   background: var(--danger);
+  
+  /* 
+    animation applies a @keyframes animation
+    name duration timing-function iteration-count
+    pulse = animation name
+    0.5s = duration
+    infinite = repeat forever
+  */
   animation: pulse 0.5s infinite;
 }
 
+/* 
+  @keyframes defines an animation sequence
+  You specify styles at different points (0%, 50%, 100%, etc.)
+  The browser smoothly transitions between them
+*/
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
 }
 
-/* ===== Teams Grid ===== */
+
+/* 
+  ============================================================================
+  SECTION 9: TEAM SELECTION GRID
+  ============================================================================
+*/
+
 .teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -239,7 +586,10 @@ input[type="number"] {
 .team-btn {
   padding: 16px;
   border-radius: 12px;
+  
+  /* 2px border for more prominence */
   border: 2px solid var(--card-border);
+  
   background: var(--bg);
   color: var(--text);
   cursor: pointer;
@@ -252,16 +602,32 @@ input[type="number"] {
   transform: translateY(-2px);
 }
 
+/* 
+  .team-btn.active selects elements with BOTH classes
+  This is how we show which team is currently selected
+*/
 .team-btn.active {
   border-color: var(--primary);
+  
+  /* 
+    rgba() for semi-transparent background
+    Last value (0.1) = 10% opacity
+  */
   background: rgba(99, 102, 241, 0.1);
+  
   box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
 .team-btn .team-name {
   font-size: 1.1rem;
   font-weight: 700;
+  
+  /* 
+    display: block makes inline element behave like block
+    Takes full width and allows margin-bottom
+  */
   display: block;
+  
   margin-bottom: 4px;
 }
 
@@ -282,15 +648,31 @@ input[type="number"] {
   text-align: center;
 }
 
-/* ===== Quiz Card ===== */
+
+/* 
+  ============================================================================
+  SECTION 10: QUIZ CARD
+  ============================================================================
+*/
+
 .quiz-card {
+  /* 
+    Gradient background for visual interest
+    Can layer multiple backgrounds!
+  */
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border: 2px solid var(--card-border);
 }
 
 .question-header {
   display: flex;
+  
+  /* 
+    justify-content controls alignment on the main axis
+    space-between puts max space between items
+  */
   justify-content: space-between;
+  
   align-items: center;
   margin-bottom: 16px;
 }
@@ -303,26 +685,27 @@ input[type="number"] {
   font-size: 0.9rem;
 }
 
-.difficulty-tag {
+.topic-tag {
   padding: 6px 12px;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
 }
 
-.difficulty-tag.easy {
-  background: rgba(16, 185, 129, 0.2);
-  color: var(--success);
-}
-
-.difficulty-tag.medium {
-  background: rgba(245, 158, 11, 0.2);
-  color: var(--warning);
-}
-
-.difficulty-tag.hard {
+/* Different colors for different topics */
+.topic-tag.html {
   background: rgba(239, 68, 68, 0.2);
-  color: var(--danger);
+  color: #ef4444;
+}
+
+.topic-tag.css {
+  background: rgba(59, 130, 246, 0.2);
+  color: #3b82f6;
+}
+
+.topic-tag.js {
+  background: rgba(234, 179, 8, 0.2);
+  color: #eab308;
 }
 
 .question-text {
@@ -352,17 +735,31 @@ input[type="number"] {
   gap: 12px;
 }
 
+/* 
+  :not() pseudo-class excludes certain elements
+  :hover:not(:disabled) = hover effect only if NOT disabled
+*/
 .choice-btn:hover:not(:disabled) {
   border-color: var(--primary);
   background: rgba(99, 102, 241, 0.1);
+  
+  /* translateX moves horizontally (positive = right) */
   transform: translateX(4px);
 }
 
+/* :disabled pseudo-class for disabled elements */
 .choice-btn:disabled {
+  /* 
+    opacity controls transparency
+    0 = fully transparent, 1 = fully opaque
+    0.5 = 50% transparent (grayed out look)
+  */
   opacity: 0.5;
+  
   cursor: not-allowed;
 }
 
+/* Classes added by JavaScript for feedback */
 .choice-btn.correct {
   border-color: var(--success);
   background: rgba(16, 185, 129, 0.2);
@@ -385,22 +782,35 @@ input[type="number"] {
   justify-content: center;
   font-weight: 700;
   font-size: 0.9rem;
+  
+  /* 
+    flex-shrink: 0 prevents item from shrinking
+    Keeps the letter circle the same size always
+  */
   flex-shrink: 0;
 }
 
+/* Animation for correct answers */
 @keyframes correctPop {
   0% { transform: scale(1); }
   50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
 
+/* Animation for wrong answers - shakes side to side */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
 }
 
-/* ===== Feedback ===== */
+
+/* 
+  ============================================================================
+  SECTION 11: FEEDBACK AREA
+  ============================================================================
+*/
+
 .feedback-area {
   margin-top: 20px;
   min-height: 60px;
@@ -426,12 +836,26 @@ input[type="number"] {
 }
 
 @keyframes bounceIn {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); opacity: 1; }
+  0% { 
+    transform: scale(0); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: scale(1.2); 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
 }
 
-/* ===== Scoreboard ===== */
+
+/* 
+  ============================================================================
+  SECTION 12: SCOREBOARD
+  ============================================================================
+*/
+
 .scoreboard-card {
   background: linear-gradient(135deg, #1e293b 0%, #1a1a2e 100%);
 }
@@ -447,6 +871,7 @@ input[type="number"] {
   transition: all 0.3s;
 }
 
+/* Special styling for top 3 positions */
 .score-row.first {
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(234, 179, 8, 0.1) 100%);
   border: 1px solid rgba(245, 158, 11, 0.3);
@@ -488,10 +913,19 @@ input[type="number"] {
   color: var(--primary);
 }
 
-/* ===== Stats Grid ===== */
+
+/* 
+  ============================================================================
+  SECTION 13: STATS GRID
+  ============================================================================
+*/
+
 .stats-grid {
   display: grid;
+  
+  /* 3 equal columns */
   grid-template-columns: repeat(3, 1fr);
+  
   gap: 16px;
 }
 
@@ -516,15 +950,41 @@ input[type="number"] {
   letter-spacing: 0.5px;
 }
 
-/* ===== Confetti ===== */
+
+/* 
+  ============================================================================
+  SECTION 14: CONFETTI ANIMATION
+  ============================================================================
+*/
+
 .confetti-container {
+  /* 
+    position: fixed positions relative to the viewport
+    Element stays in place even when scrolling
+  */
   position: fixed;
+  
+  /* Position at top-left corner */
   top: 0;
   left: 0;
+  
+  /* Cover entire viewport */
   width: 100%;
   height: 100%;
+  
+  /* 
+    pointer-events: none allows clicks to pass through
+    So confetti doesn't block interactions
+  */
   pointer-events: none;
+  
+  /* 
+    z-index controls stacking order
+    Higher values appear on top
+    1000 ensures confetti is above everything
+  */
   z-index: 1000;
+  
   overflow: hidden;
 }
 
@@ -534,6 +994,10 @@ input[type="number"] {
   height: 10px;
   opacity: 0;
   animation: confettiFall 3s ease-out forwards;
+  /* 
+    forwards keeps the final state after animation ends
+    (otherwise it would snap back to opacity: 0)
+  */
 }
 
 @keyframes confettiFall {
@@ -543,38 +1007,68 @@ input[type="number"] {
   }
   100% {
     opacity: 0;
+    /* 
+      100vh = 100% viewport height
+      Confetti falls from top to bottom of screen
+    */
     transform: translateY(100vh) rotate(720deg);
   }
 }
 
-/* ===== Responsive ===== */
+
+/* 
+  ============================================================================
+  SECTION 15: RESPONSIVE DESIGN - Media Queries
+  ============================================================================
+  
+  Media queries apply styles only when certain conditions are met
+  Commonly used for different screen sizes (responsive design)
+  
+  @media (max-width: 768px) means:
+  "Apply these styles when viewport is 768px wide or less"
+  
+  ============================================================================
+*/
+
 @media (max-width: 768px) {
+  /* Smaller heading on mobile */
   .header h1 {
     font-size: 1.8rem;
   }
   
+  /* Stack choices vertically on mobile */
   .choices-grid {
     grid-template-columns: 1fr;
   }
   
+  /* 2 columns for teams on mobile */
   .teams-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   
+  /* Stack stats vertically on mobile */
   .stats-grid {
     grid-template-columns: 1fr;
   }
   
+  /* Stack status badges vertically */
   .game-status {
     flex-direction: column;
   }
   
+  /* Full width badges on mobile */
   .status-badge {
     width: 100%;
   }
 }
 
-/* ===== Round End Animation ===== */
+
+/* 
+  ============================================================================
+  SECTION 16: MISC ANIMATIONS
+  ============================================================================
+*/
+
 .round-end {
   animation: roundEndPulse 0.5s ease;
 }
@@ -584,3 +1078,54 @@ input[type="number"] {
   50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
+
+
+/* 
+  ============================================================================
+  CSS CONCEPTS SUMMARY
+  ============================================================================
+  
+  SELECTORS:
+  - element      : Selects all of that element (p, div, h1)
+  - .class       : Selects elements with that class
+  - #id          : Selects element with that ID
+  - element.class: Element with specific class
+  - parent child : Child elements inside parent
+  - :pseudo      : Pseudo-classes (:hover, :focus, :disabled)
+  - [attr]       : Attribute selectors
+  
+  BOX MODEL (from outside to inside):
+  - margin       : Space outside the border
+  - border       : The element's border
+  - padding      : Space inside the border
+  - content      : The actual content
+  
+  DISPLAY TYPES:
+  - block        : Takes full width, starts new line
+  - inline       : Only takes needed width, no new line
+  - flex         : Flexbox container (1D layout)
+  - grid         : Grid container (2D layout)
+  - none         : Hides element completely
+  
+  POSITIONING:
+  - static       : Default, normal flow
+  - relative     : Relative to normal position
+  - absolute     : Relative to positioned parent
+  - fixed        : Relative to viewport
+  
+  UNITS:
+  - px           : Pixels (fixed size)
+  - %            : Percentage of parent
+  - em           : Relative to parent font size
+  - rem          : Relative to root font size
+  - vh/vw        : Viewport height/width percentage
+  - fr           : Fraction of available space (grid)
+  
+  COLORS:
+  - named        : red, blue, white, etc.
+  - hex          : #ff0000, #3b82f6
+  - rgb()        : rgb(255, 0, 0)
+  - rgba()       : rgb(255, 0, 0, 0.5) - with transparency
+  
+  ============================================================================
+*/

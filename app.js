@@ -1,6 +1,7 @@
 // ============================================================================
-// JAVASCRIPT QUIZ BATTLE - A Team-Based Quiz Game
+// WEB DEV QUIZ BATTLE - A Team-Based Quiz Game
 // ============================================================================
+// 
 // This file demonstrates many core JavaScript concepts:
 // - Variables (const, let)
 // - Data structures (objects, arrays)
@@ -11,167 +12,295 @@
 // - Array methods (forEach, map, sort, filter, includes)
 // - Template literals (backtick strings with ${variables})
 // - Conditional logic (if/else, ternary operator)
+// 
 // ============================================================================
 
 
 // ============================================================================
-// SECTION 1: DATA - Our Quiz Questions
+// SECTION 1: QUIZ QUESTIONS DATA
 // ============================================================================
-// We store questions in an OBJECT with three ARRAYS (easy, medium, hard)
-// Each question is an OBJECT with properties: q (question), a (answer), c (choices)
+// 
+// We organize questions by TOPIC (html, css, js)
+// Each topic is a KEY in our object, and its VALUE is an array of questions
+// Each question is an object with: q (question), a (answer), c (choices)
 // 
 // CONCEPT: Objects use curly braces {} and store key-value pairs
 // CONCEPT: Arrays use square brackets [] and store ordered lists
+// 
 // ============================================================================
 
 const questions = {
-  // "easy" is a KEY, and its VALUE is an array of question objects
-  easy: [
+  
+  // ========== HTML QUESTIONS ==========
+  // HTML = HyperText Markup Language - the structure of web pages
+  
+  html: [
     {
-      q: "What does DOM stand for?",                    // q = the question text
-      a: "Document Object Model",                       // a = the correct answer
-      c: ["Data Object Method", "Document Object Model", "Dynamic Output Mode", "Design Object Map"],  // c = all choices
+      q: "What does HTML stand for?",
+      a: "HyperText Markup Language",
+      c: ["HyperText Markup Language", "Home Tool Markup Language", "Hyperlinks Text Mark Language", "Hyper Tool Multi Language"],
     },
     {
-      q: "Which keyword declares a variable that cannot be reassigned?",
+      q: "Which tag creates the largest heading?",
+      a: "<h1>",
+      c: ["<h1>", "<h6>", "<heading>", "<head>"],
+    },
+    {
+      q: "Which tag creates a paragraph?",
+      a: "<p>",
+      c: ["<p>", "<para>", "<text>", "<paragraph>"],
+    },
+    {
+      q: "Which tag creates a clickable link?",
+      a: "<a>",
+      c: ["<a>", "<link>", "<href>", "<url>"],
+    },
+    {
+      q: "Which tag displays an image?",
+      a: "<img>",
+      c: ["<img>", "<image>", "<picture>", "<photo>"],
+    },
+    {
+      q: "Which tag creates an unordered (bulleted) list?",
+      a: "<ul>",
+      c: ["<ul>", "<ol>", "<list>", "<li>"],
+    },
+    {
+      q: "Which section contains visible page content?",
+      a: "<body>",
+      c: ["<body>", "<head>", "<html>", "<content>"],
+    },
+    {
+      q: "Which tag creates a clickable button?",
+      a: "<button>",
+      c: ["<button>", "<btn>", "<click>", "<input>"],
+    },
+    {
+      q: "What attribute specifies a unique identifier for an element?",
+      a: "id",
+      c: ["id", "class", "name", "identifier"],
+    },
+    {
+      q: "What attribute is used for the destination of a link?",
+      a: "href",
+      c: ["href", "src", "link", "url"],
+    },
+    {
+      q: "Which tag creates a line break?",
+      a: "<br>",
+      c: ["<br>", "<break>", "<lb>", "<newline>"],
+    },
+    {
+      q: "Which tag is used for the main title in the browser tab?",
+      a: "<title>",
+      c: ["<title>", "<head>", "<h1>", "<name>"],
+    },
+    {
+      q: "What tag wraps around each item in a list?",
+      a: "<li>",
+      c: ["<li>", "<item>", "<list>", "<ul>"],
+    },
+    {
+      q: "Which attribute adds alt text to an image?",
+      a: "alt",
+      c: ["alt", "title", "text", "description"],
+    },
+    {
+      q: "Which tag defines a division or section?",
+      a: "<div>",
+      c: ["<div>", "<section>", "<span>", "<container>"],
+    },
+  ],
+
+  // ========== CSS QUESTIONS ==========
+  // CSS = Cascading Style Sheets - the appearance of web pages
+  
+  css: [
+    {
+      q: "What does CSS stand for?",
+      a: "Cascading Style Sheets",
+      c: ["Cascading Style Sheets", "Computer Style Sheets", "Creative Style System", "Colorful Style Sheets"],
+    },
+    {
+      q: "Which property changes text color?",
+      a: "color",
+      c: ["color", "text-color", "font-color", "foreground"],
+    },
+    {
+      q: "Which property changes background color?",
+      a: "background-color",
+      c: ["background-color", "bg-color", "back-color", "color-background"],
+    },
+    {
+      q: "Which property changes font size?",
+      a: "font-size",
+      c: ["font-size", "text-size", "size", "font"],
+    },
+    {
+      q: "Which property makes text bold?",
+      a: "font-weight",
+      c: ["font-weight", "text-bold", "font-style", "bold"],
+    },
+    {
+      q: "Which property adds space INSIDE an element's border?",
+      a: "padding",
+      c: ["padding", "margin", "spacing", "border-space"],
+    },
+    {
+      q: "Which property adds space OUTSIDE an element's border?",
+      a: "margin",
+      c: ["margin", "padding", "spacing", "outer-space"],
+    },
+    {
+      q: "How do you select an element by its ID in CSS?",
+      a: "#id",
+      c: ["#id", ".id", "id", "*id"],
+    },
+    {
+      q: "How do you select an element by its class in CSS?",
+      a: ".class",
+      c: [".class", "#class", "class", "*class"],
+    },
+    {
+      q: "Which property changes the font family?",
+      a: "font-family",
+      c: ["font-family", "font-type", "text-font", "typeface"],
+    },
+    {
+      q: "Which property rounds the corners of an element?",
+      a: "border-radius",
+      c: ["border-radius", "corner-radius", "border-round", "round-corners"],
+    },
+    {
+      q: "Which value hides an element completely?",
+      a: "display: none",
+      c: ["display: none", "visibility: hidden", "opacity: 0", "hidden: true"],
+    },
+    {
+      q: "Which property centers text horizontally?",
+      a: "text-align: center",
+      c: ["text-align: center", "align: center", "center-text", "horizontal-align: center"],
+    },
+    {
+      q: "Which property sets the width of an element?",
+      a: "width",
+      c: ["width", "size", "length", "horizontal"],
+    },
+    {
+      q: "Which unit is relative to the root font size?",
+      a: "rem",
+      c: ["rem", "em", "px", "%"],
+    },
+    {
+      q: "Which property changes cursor appearance on hover?",
+      a: "cursor",
+      c: ["cursor", "pointer", "mouse", "hover-style"],
+    },
+    {
+      q: "What does 'px' stand for?",
+      a: "pixels",
+      c: ["pixels", "points", "percentage", "picas"],
+    },
+    {
+      q: "Which property makes elements sit side by side?",
+      a: "display: flex",
+      c: ["display: flex", "display: inline", "float: left", "position: side"],
+    },
+  ],
+
+  // ========== JAVASCRIPT QUESTIONS ==========
+  // JavaScript = The programming language that makes pages interactive
+  
+  js: [
+    {
+      q: "What does JS stand for?",
+      a: "JavaScript",
+      c: ["JavaScript", "JavaSource", "JustScript", "JScript"],
+    },
+    {
+      q: "Which keyword declares a variable that CAN be changed?",
+      a: "let",
+      c: ["let", "const", "var", "variable"],
+    },
+    {
+      q: "Which keyword declares a variable that CANNOT be changed?",
       a: "const",
-      c: ["var", "let", "const", "static"],
+      c: ["const", "let", "var", "final"],
     },
     {
-      q: "What symbol is used for single-line comments in JavaScript?",
-      a: "//",
-      c: ["#", "//", "/*", "--"],
+      q: "How do you write a single-line comment?",
+      a: "// comment",
+      c: ["// comment", "# comment", "/* comment */", "-- comment"],
     },
     {
-      q: "Which method adds an element to the END of an array?",
-      a: "push()",
-      c: ["push()", "pop()", "shift()", "unshift()"],
+      q: "How do you print something to the console?",
+      a: "console.log()",
+      c: ["console.log()", "print()", "echo()", "write()"],
     },
     {
-      q: "What does console.log() do?",
-      a: "Prints output to the console",
-      c: ["Creates a variable", "Prints output to the console", "Declares a function", "Imports a module"],
+      q: "Which method selects an element by ID?",
+      a: "getElementById()",
+      c: ["getElementById()", "getElement()", "selectById()", "findElement()"],
     },
     {
-      q: "Which operator checks BOTH value AND type?",
-      a: "===",
-      c: ["==", "===", "!=", "="],
-    },
-    {
-      q: "What is the correct way to write an array?",
+      q: "How do you write an array?",
       a: "[1, 2, 3]",
-      c: ["(1, 2, 3)", "{1, 2, 3}", "[1, 2, 3]", "<1, 2, 3>"],
+      c: ["[1, 2, 3]", "(1, 2, 3)", "{1, 2, 3}", "<1, 2, 3>"],
+    },
+    {
+      q: "Which method adds an item to the END of an array?",
+      a: "push()",
+      c: ["push()", "add()", "append()", "insert()"],
+    },
+    {
+      q: "What does addEventListener() do?",
+      a: "Waits for an event like a click",
+      c: ["Waits for an event like a click", "Creates HTML", "Styles elements", "Deletes events"],
+    },
+    {
+      q: "Which operator checks if two values are equal?",
+      a: "===",
+      c: ["===", "=", "==", "!="],
+    },
+    {
+      q: "How do you create a function?",
+      a: "function name() {}",
+      c: ["function name() {}", "def name():", "func name() {}", "create name() {}"],
+    },
+    {
+      q: "What symbol starts a string?",
+      a: "Quotes (\" or ')",
+      c: ["Quotes (\" or ')", "Parentheses ()", "Brackets []", "Curly braces {}"],
+    },
+    {
+      q: "How do you change text inside an element?",
+      a: "textContent",
+      c: ["textContent", "innerHTML", "innerText", "All of the above"],
     },
     {
       q: "Which event fires when a button is clicked?",
       a: "click",
-      c: ["hover", "submit", "click", "load"],
-    },
-  ],
-
-  medium: [
-    {
-      q: "What does addEventListener() do?",
-      a: "Attaches an event handler to an element",
-      c: ["Creates new HTML", "Attaches an event handler to an element", "Removes an event", "Styles an element"],
+      c: ["click", "press", "tap", "push"],
     },
     {
-      q: "Which method selects an element by its ID?",
-      a: "getElementById()",
-      c: ["querySelector()", "getElementById()", "getElementByClass()", "selectById()"],
+      q: "What does DOM stand for?",
+      a: "Document Object Model",
+      c: ["Document Object Model", "Data Object Model", "Document Order Model", "Display Object Map"],
     },
     {
-      q: "What is the output of: typeof []",
-      a: "object",
-      c: ["array", "object", "list", "undefined"],
+      q: "How do you add a CSS class to an element in JS?",
+      a: "classList.add()",
+      c: ["classList.add()", "addClass()", "class.add()", "addClassName()"],
     },
     {
-      q: "Which method converts a JSON string to a JavaScript object?",
-      a: "JSON.parse()",
-      c: ["JSON.stringify()", "JSON.parse()", "JSON.convert()", "JSON.toObject()"],
+      q: "Which loop runs a set number of times?",
+      a: "for loop",
+      c: ["for loop", "while loop", "do loop", "each loop"],
     },
     {
-      q: "What does the 'this' keyword refer to?",
-      a: "The object that owns the current code",
-      c: ["The previous function", "The object that owns the current code", "The global window always", "The parent element"],
-    },
-    {
-      q: "Which array method creates a NEW array with filtered elements?",
-      a: "filter()",
-      c: ["find()", "filter()", "forEach()", "includes()"],
-    },
-    {
-      q: "What is a callback function?",
-      a: "A function passed as an argument to another function",
-      c: ["A function that calls itself", "A function passed as an argument to another function", "A function that returns void", "A function with no parameters"],
-    },
-    {
-      q: "Which CSS property hides an element but keeps its space?",
-      a: "visibility: hidden",
-      c: ["display: none", "visibility: hidden", "opacity: 0", "hidden: true"],
-    },
-    {
-      q: "What does the spread operator (...) do?",
-      a: "Expands an iterable into individual elements",
-      c: ["Combines two strings", "Expands an iterable into individual elements", "Declares a rest parameter only", "Creates a copy of a function"],
-    },
-    {
-      q: "Which method removes the LAST element from an array?",
-      a: "pop()",
-      c: ["push()", "pop()", "shift()", "slice()"],
-    },
-  ],
-
-  hard: [
-    {
-      q: "What is the output of: console.log(1 + '2' + 3)",
-      a: "123",
-      c: ["6", "123", "15", "Error"],
-    },
-    {
-      q: "What is closure in JavaScript?",
-      a: "A function that has access to its outer scope variables",
-      c: ["A way to close browser tabs", "A function that has access to its outer scope variables", "A method to end loops", "A type of error handling"],
-    },
-    {
-      q: "What is the output of: console.log(typeof NaN)",
-      a: "number",
-      c: ["NaN", "undefined", "number", "object"],
-    },
-    {
-      q: "Which method returns a Promise?",
-      a: "fetch()",
-      c: ["setTimeout()", "fetch()", "addEventListener()", "querySelector()"],
-    },
-    {
-      q: "What is event bubbling?",
-      a: "Events propagate from child to parent elements",
-      c: ["Events propagate from child to parent elements", "Events only fire once", "Events are cancelled automatically", "Events propagate from parent to child"],
-    },
-    {
-      q: "What does 'use strict' do?",
-      a: "Enables strict mode with stricter parsing and error handling",
-      c: ["Makes code run faster", "Enables strict mode with stricter parsing and error handling", "Prevents all errors", "Enables TypeScript features"],
-    },
-    {
-      q: "What is the output of: [1,2,3].map(x => x * 2)",
-      a: "[2, 4, 6]",
-      c: ["[1, 2, 3]", "[2, 4, 6]", "6", "undefined"],
-    },
-    {
-      q: "What is the difference between null and undefined?",
-      a: "null is intentional absence, undefined means not assigned",
-      c: ["They are exactly the same", "null is intentional absence, undefined means not assigned", "undefined is for objects only", "null is for numbers only"],
-    },
-    {
-      q: "What is hoisting in JavaScript?",
-      a: "Variable and function declarations are moved to the top",
-      c: ["Variable and function declarations are moved to the top", "Code runs from bottom to top", "Functions are deleted after use", "Variables are made global"],
-    },
-    {
-      q: "What does async/await do?",
-      a: "Makes asynchronous code look synchronous",
-      c: ["Speeds up code execution", "Makes asynchronous code look synchronous", "Pauses the browser", "Creates multiple threads"],
+      q: "What does innerHTML change?",
+      a: "The HTML content inside an element",
+      c: ["The HTML content inside an element", "Only text content", "CSS styles", "Element attributes"],
     },
   ],
 };
@@ -180,10 +309,12 @@ const questions = {
 // ============================================================================
 // SECTION 2: TEAM DATA
 // ============================================================================
-// An array of team objects - each team has name, emoji, score, and streak
 // 
-// CONCEPT: Arrays can hold objects, and we can access them by index
-//          teams[0] = first team, teams[1] = second team, etc.
+// An array of team objects - each team has a name, emoji, score, and streak
+// 
+// CONCEPT: Arrays can hold objects
+// CONCEPT: We access items by index: teams[0] = first team
+// 
 // ============================================================================
 
 const teams = [
@@ -198,150 +329,157 @@ const teams = [
 // ============================================================================
 // SECTION 3: STATE VARIABLES
 // ============================================================================
-// These variables track the current state of our game
 // 
-// CONCEPT: "let" allows us to reassign values later (unlike "const")
-// CONCEPT: "null" means "intentionally empty" - no team selected yet
+// These variables track the current state of our game
+// They change as the game progresses
+// 
+// CONCEPT: "let" allows reassignment (value can change)
+// CONCEPT: "null" means "intentionally empty"
+// 
 // ============================================================================
 
-let currentTeamIndex = null;   // Which team is currently playing (0-4, or null if none)
-let running = false;           // Is a round currently in progress? (true/false)
-let maxTime = 30;              // Maximum time for a round (in seconds)
-let timeLeft = 30;             // Current countdown timer value
-let timer = null;              // Holds reference to our setInterval timer
-let currentQuestion = null;    // The question currently being displayed
-let questionCount = 0;         // How many questions asked in current round
-let totalCorrect = 0;          // Total correct answers across all rounds
-let totalAsked = 0;            // Total questions asked across all rounds
+let currentTeamIndex = null;   // Which team is playing? (0-4, or null)
+let running = false;           // Is a round in progress? (true/false)
+let maxTime = 30;              // Maximum seconds per round
+let timeLeft = 30;             // Current countdown value
+let timer = null;              // Reference to our interval timer
+let currentQuestion = null;    // The current question object
+let questionCount = 0;         // Questions asked this round
+let totalCorrect = 0;          // Total correct answers (all rounds)
+let totalAsked = 0;            // Total questions asked (all rounds)
+let currentTopic = null;       // Current question's topic (html/css/js)
 
 
 // ============================================================================
 // SECTION 4: HELPER FUNCTIONS
 // ============================================================================
-// Small utility functions that make our code cleaner and more reusable
+// 
+// Small utility functions that make our code cleaner
 // 
 // CONCEPT: Arrow functions are a shorter way to write functions
-//          (id) => document.getElementById(id)  is the same as:
-//          function(id) { return document.getElementById(id); }
+//          (param) => expression
+//          is the same as
+//          function(param) { return expression; }
+// 
 // ============================================================================
 
-// $ is a shortcut function - instead of typing document.getElementById("myId")
-// we can just type $("myId") - much shorter!
+// $ is a shortcut for document.getElementById
+// Instead of: document.getElementById("myId")
+// We write:   $("myId")
 const $ = (id) => document.getElementById(id);
 
-// shuffle() randomizes the order of an array
-// CONCEPT: The spread operator [...arr] creates a COPY of the array
-//          so we don't modify the original
-// CONCEPT: .sort() with a comparison function sorts the array
-//          Math.random() - 0.5 gives random positive or negative numbers
-//          which randomizes the sort order
+// shuffle() randomizes array order
+// CONCEPT: [...arr] creates a copy using spread operator
+// CONCEPT: .sort() with comparison function reorders array
+// CONCEPT: Math.random() - 0.5 gives random positive/negative
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
 
 // ============================================================================
-// SECTION 5: INITIALIZATION - Runs When Page Loads
+// SECTION 5: INITIALIZATION
 // ============================================================================
-// DOMContentLoaded fires when the HTML is fully loaded and parsed
-// This ensures we don't try to access elements before they exist!
 // 
-// CONCEPT: addEventListener attaches a function to run when an event happens
-// CONCEPT: The arrow function () => {} is the callback that runs on the event
+// DOMContentLoaded fires when HTML is fully loaded
+// This ensures elements exist before we try to use them!
+// 
+// CONCEPT: addEventListener(event, callback) runs callback when event happens
+// 
 // ============================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Render the initial UI
-  renderTeams();       // Draw the team selection buttons
-  renderScoreboard();  // Draw the scoreboard
-  updateStats();       // Update the stats display
+  // Render initial UI
+  renderTeams();       // Draw team buttons
+  renderScoreboard();  // Draw scoreboard
+  updateStats();       // Update stats display
   
-  // Set up event listeners for our control buttons
-  // When "Reset All" is clicked, run the resetAll function
+  // Set up button click handlers
   $("resetAllBtn").addEventListener("click", resetAll);
   
-  // When the round time input changes, update the timer
+  // Update timer when input changes
   $("roundTime").addEventListener("change", updateRoundTime);
 });
 
 
 // ============================================================================
-// SECTION 6: RENDER FUNCTIONS - Update What Users See
+// SECTION 6: RENDER FUNCTIONS
 // ============================================================================
-// These functions update the HTML to show current game state
 // 
-// CONCEPT: innerHTML lets us set/replace HTML content of an element
-// CONCEPT: createElement() creates new HTML elements in JavaScript
-// CONCEPT: appendChild() adds an element as a child of another element
+// These functions update what users see on the page
+// 
+// CONCEPT: innerHTML sets/replaces HTML content
+// CONCEPT: createElement() creates new HTML elements
+// CONCEPT: appendChild() adds element as child of another
+// 
 // ============================================================================
 
 /**
- * renderTeams() - Creates and displays the team selection buttons
+ * renderTeams() - Creates team selection buttons
  * 
- * This function:
- * 1. Clears any existing buttons
- * 2. Loops through each team
- * 3. Creates a button for each team
- * 4. Adds click event to start that team's round
+ * Steps:
+ * 1. Get the container element
+ * 2. Clear existing buttons
+ * 3. Loop through teams array
+ * 4. Create a button for each team
+ * 5. Add click event to start that team's round
  */
 function renderTeams() {
-  // Get the container element where buttons will go
+  // Get container where buttons go
   const container = $("groupsRow");
   
-  // Clear out any existing buttons (innerHTML = "" removes all children)
+  // Clear existing content
   container.innerHTML = "";
   
-  // Loop through each team using forEach
-  // CONCEPT: forEach runs a function for each item in an array
-  //          (team, idx) means: team = current item, idx = current index (0,1,2,3,4)
+  // Loop through each team
+  // CONCEPT: forEach(callback) runs callback for each array item
+  //          callback receives (item, index)
   teams.forEach((team, idx) => {
-    // Create a new button element
+    // Create button element
     const btn = document.createElement("button");
     
-    // Set the CSS class - add "active" class if this is the current team
-    // CONCEPT: Template literal with ternary operator:
-    //          condition ? valueIfTrue : valueIfFalse
+    // Set CSS class - add "active" if this team is playing
+    // CONCEPT: Ternary operator: condition ? ifTrue : ifFalse
     btn.className = `team-btn ${idx === currentTeamIndex ? "active" : ""}`;
     
-    // Set the button's HTML content using a template literal
-    // CONCEPT: Template literals use backticks `` and allow ${variable} inside
+    // Set button HTML using template literal
+    // CONCEPT: Template literals use backticks `` 
+    //          and allow ${variable} inside
     btn.innerHTML = `
       <span class="team-emoji">${team.emoji}</span>
       <span class="team-name">${team.name}</span>
       <span class="team-score">${team.score} pts</span>
     `;
     
-    // When this button is clicked, start a round for this team
-    // CONCEPT: Arrow function () => startRound(idx) captures the current idx value
-    //          This is called a "closure" - the function remembers idx
+    // When clicked, start round for this team
+    // CONCEPT: Arrow function () => startRound(idx) 
+    //          "closes over" idx variable (closure)
     btn.addEventListener("click", () => startRound(idx));
     
-    // Add the button to the container
+    // Add button to container
     container.appendChild(btn);
   });
 }
 
 
 /**
- * renderScoreboard() - Displays teams sorted by score (highest first)
+ * renderScoreboard() - Shows teams sorted by score
  * 
- * CONCEPT: This shows method chaining - calling multiple methods in sequence
- *          [...teams].map().sort().map().join()
+ * Uses method chaining: [...teams].map().sort().map().join()
  */
 function renderScoreboard() {
-  // Create a sorted copy of teams array
-  // CONCEPT: [...teams] creates a copy (spread operator)
-  //          .map() transforms each item, adding originalIndex
-  //          .sort() reorders by score (b.score - a.score = descending order)
+  // Create sorted copy of teams
+  // CONCEPT: [...teams] copies array (spread operator)
+  // CONCEPT: .map() transforms each item
+  // CONCEPT: .sort() reorders array
   const sorted = [...teams]
-    .map((t, i) => ({ ...t, originalIndex: i }))  // Add index to each team object
-    .sort((a, b) => b.score - a.score);            // Sort by score (highest first)
+    .map((t, i) => ({ ...t, originalIndex: i }))
+    .sort((a, b) => b.score - a.score);  // Descending order
   
-  // Arrays for rank display
   const rankEmojis = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"];
   const rankClasses = ["first", "second", "third", "", ""];
   
-  // Build HTML for scoreboard using map() and join()
-  // CONCEPT: .map() transforms array items into HTML strings
-  // CONCEPT: .join("") combines array of strings into one string
+  // Build HTML string with map and join
+  // CONCEPT: .map() returns new array of transformed items
+  // CONCEPT: .join("") combines array into single string
   $("scoreboard").innerHTML = sorted
     .map((team, i) => `
       <div class="score-row ${rankClasses[i]}">
@@ -352,26 +490,20 @@ function renderScoreboard() {
         <span class="score-points">${team.score} pts</span>
       </div>
     `)
-    .join("");  // Join array elements with no separator
+    .join("");
 }
 
 
 /**
- * updateStats() - Updates the game statistics display
- * 
- * CONCEPT: .textContent sets the text inside an element (safer than innerHTML)
- * CONCEPT: Ternary operator for conditional display
+ * updateStats() - Updates game statistics display
  */
 function updateStats() {
-  // Update total questions asked
+  // .textContent sets text inside element
   $("totalQuestions").textContent = totalAsked;
-  
-  // Update total correct answers
   $("totalCorrect").textContent = totalCorrect;
   
-  // Calculate and display accuracy percentage
-  // CONCEPT: Ternary operator: condition ? valueIfTrue : valueIfFalse
-  //          This prevents division by zero when totalAsked is 0
+  // Calculate accuracy percentage
+  // CONCEPT: Ternary prevents division by zero
   $("accuracy").textContent = totalAsked > 0 
     ? Math.round((totalCorrect / totalAsked) * 100) + "%" 
     : "0%";
@@ -379,151 +511,118 @@ function updateStats() {
 
 
 // ============================================================================
-// SECTION 7: QUIZ LOGIC - Question Selection and Answer Handling
+// SECTION 7: QUIZ LOGIC
 // ============================================================================
-// Core game mechanics for selecting questions and processing answers
+// 
+// Core game mechanics for questions and answers
+// 
 // ============================================================================
 
 /**
- * getQuestionPool() - Returns the array of questions based on difficulty setting
- * 
- * CONCEPT: Accessing object properties with bracket notation: questions[difficulty]
- * CONCEPT: Spread operator to combine multiple arrays: [...arr1, ...arr2]
+ * getQuestionPool() - Returns questions based on topic selection
  */
 function getQuestionPool() {
-  // Get the selected difficulty from the dropdown
-  const difficulty = $("difficulty").value;
+  const topic = $("topic").value;
   
-  // If "mixed" is selected, combine all question arrays
-  if (difficulty === "mixed") {
-    // CONCEPT: Spread operator (...) unpacks arrays
-    // This creates one big array with all questions from all difficulties
-    return [...questions.easy, ...questions.medium, ...questions.hard];
+  if (topic === "all") {
+    // Combine all topics into one array
+    // CONCEPT: Spread operator unpacks arrays
+    return [
+      ...questions.html.map(q => ({ ...q, topic: "html" })),
+      ...questions.css.map(q => ({ ...q, topic: "css" })),
+      ...questions.js.map(q => ({ ...q, topic: "js" })),
+    ];
   }
   
-  // Otherwise, return the array for the selected difficulty
-  // CONCEPT: Bracket notation questions[difficulty] is like questions.easy
-  //          but lets us use a variable for the key name
-  // The || provides a fallback if difficulty is undefined
-  return questions[difficulty] || questions.medium;
+  // Return selected topic with topic label added
+  return questions[topic].map(q => ({ ...q, topic: topic }));
 }
 
 
 /**
- * pickQuestion() - Selects a random question and displays it with answer choices
+ * pickQuestion() - Selects random question and displays it
  * 
- * This is a complex function that:
- * 1. Gets the question pool
- * 2. Picks a random question
- * 3. Determines the difficulty for display
- * 4. Updates the UI with question and shuffled choices
+ * Steps:
+ * 1. Get question pool based on settings
+ * 2. Pick random question
+ * 3. Update UI with question text
+ * 4. Create shuffled answer buttons
  */
 function pickQuestion() {
-  // Get available questions based on difficulty setting
   const pool = getQuestionPool();
   
-  // Pick a random question from the pool
-  // CONCEPT: Math.random() returns 0-0.999...
-  //          Multiply by array length and floor to get valid index
-  currentQuestion = pool[Math.floor(Math.random() * pool.length)];
+  // Pick random question
+  // CONCEPT: Math.random() returns 0 to 0.999...
+  // CONCEPT: Math.floor() rounds down to integer
+  const randomIndex = Math.floor(Math.random() * pool.length);
+  currentQuestion = pool[randomIndex];
+  currentTopic = currentQuestion.topic;
   
-  // Increment question counter for this round
   questionCount++;
   
-  // Determine difficulty level for the badge display
-  let diffLevel = $("difficulty").value;
-  if (diffLevel === "mixed") {
-    // Check which array contains this question using .includes()
-    // CONCEPT: .includes() returns true if array contains the item
-    if (questions.easy.includes(currentQuestion)) diffLevel = "easy";
-    else if (questions.hard.includes(currentQuestion)) diffLevel = "hard";
-    else diffLevel = "medium";
-  }
-  
-  // Update the question number display
+  // Update question number
   $("questionNum").textContent = `Q${questionCount}`;
   
-  // Update difficulty badge text and styling
-  // CONCEPT: charAt(0).toUpperCase() capitalizes first letter
-  //          slice(1) gets rest of string
-  $("difficultyTag").textContent = diffLevel.charAt(0).toUpperCase() + diffLevel.slice(1);
-  $("difficultyTag").className = `difficulty-tag ${diffLevel}`;
+  // Update topic badge
+  const topicNames = { html: "HTML 📄", css: "CSS 🎨", js: "JavaScript ⚡" };
+  $("topicTag").textContent = topicNames[currentTopic];
+  $("topicTag").className = `topic-tag ${currentTopic}`;
   
-  // Display the question text
+  // Display question text
   $("qText").textContent = currentQuestion.q;
   
-  // Get the choices container and clear it
+  // Get choices container and clear it
   const choicesEl = $("choices");
   choicesEl.innerHTML = "";
-  
-  // Clear any previous feedback
   setFeedback("", "");
   
-  // Create buttons for each answer choice (A, B, C, D)
+  // Create answer buttons (A, B, C, D)
   const letters = ["A", "B", "C", "D"];
   
-  // Shuffle the choices so correct answer isn't always in same position
-  // Then create a button for each choice
+  // Shuffle choices so correct answer isn't always same position
   shuffle(currentQuestion.c).forEach((choice, i) => {
-    // Create button element
     const btn = document.createElement("button");
     btn.className = "choice-btn";
-    
-    // Set button content with letter and choice text
     btn.innerHTML = `
       <span class="choice-letter">${letters[i]}</span>
       <span>${choice}</span>
     `;
+    btn.disabled = !running;  // Disable if not playing
     
-    // Disable button if round isn't running
-    btn.disabled = !running;
-    
-    // Add click handler - passes both the choice text and button element
-    // CONCEPT: We pass the button element so we can add CSS classes to it later
+    // Handle click - pass choice and button element
     btn.addEventListener("click", () => answer(choice, btn));
     
-    // Add button to the choices container
     choicesEl.appendChild(btn);
   });
 }
 
 
 /**
- * answer() - Handles when a player clicks an answer choice
+ * answer() - Handles answer selection
  * 
- * @param {string} choice - The answer text that was clicked
- * @param {HTMLElement} btnEl - The button element that was clicked
- * 
- * This function:
- * 1. Checks if the answer is correct
- * 2. Updates score and streak
- * 3. Shows visual feedback
- * 4. Loads next question after delay
+ * @param {string} choice - The selected answer text
+ * @param {HTMLElement} btnEl - The button that was clicked
  */
 function answer(choice, btnEl) {
-  // Guard clause: exit early if game isn't running or no team selected
-  // CONCEPT: Early return pattern prevents nested if statements
+  // Guard clause: exit if not playing
+  // CONCEPT: Early return prevents deep nesting
   if (!running || currentTeamIndex === null) return;
   
-  // Check if the chosen answer matches the correct answer
+  // Check if answer is correct
   const correct = choice === currentQuestion.a;
-  
-  // Increment total questions asked (for stats)
   totalAsked++;
   
-  // Disable ALL choice buttons to prevent multiple clicks
-  // CONCEPT: querySelectorAll returns a NodeList of all matching elements
-  // CONCEPT: forEach works on NodeLists too, not just arrays
+  // Disable all buttons
+  // CONCEPT: querySelectorAll returns all matching elements
   const allBtns = $("choices").querySelectorAll("button");
   allBtns.forEach(b => b.disabled = true);
   
-  // Handle correct answer
   if (correct) {
-    totalCorrect++;  // Update global stats
-    teams[currentTeamIndex].streak++;  // Increment team's streak
+    // CORRECT ANSWER
+    totalCorrect++;
+    teams[currentTeamIndex].streak++;
     
-    // Calculate points with streak bonuses
-    // Base: 1 point, 3+ streak: 2 points, 5+ streak: 3 points
+    // Calculate points (bonus for streaks!)
     let points = 1;
     let bonusText = "";
     
@@ -536,200 +635,151 @@ function answer(choice, btnEl) {
       bonusText = " (+2 streak bonus! 🔥)";
     }
     
-    // Add points to team's score
     teams[currentTeamIndex].score += points;
     
-    // Add visual feedback - green highlight on correct button
+    // Visual feedback
     btnEl.classList.add("correct");
-    
-    // Show success message
     setFeedback(
       `<span class="correct-text">✅ Correct!${bonusText}</span>`,
-      `+${points} point${points > 1 ? "s" : ""}!`  // Pluralize "point" if needed
+      `+${points} point${points > 1 ? "s" : ""}!`
     );
     
-    // Trigger confetti animation!
+    // Confetti!
     createConfetti(5);
     
   } else {
-    // Handle wrong answer
+    // WRONG ANSWER
+    teams[currentTeamIndex].streak = 0;  // Reset streak
     
-    // Reset streak to 0 (streak broken)
-    teams[currentTeamIndex].streak = 0;
-    
-    // Add visual feedback - red highlight on wrong button
     btnEl.classList.add("wrong");
     
-    // Also highlight the correct answer in green
-    // CONCEPT: .includes() checks if string contains substring
+    // Highlight correct answer
     allBtns.forEach(b => {
       if (b.textContent.includes(currentQuestion.a)) {
         b.classList.add("correct");
       }
     });
     
-    // Show the correct answer
     setFeedback(
       `<span class="wrong-text">❌ Incorrect!</span> The answer was: <strong>${currentQuestion.a}</strong>`,
       ""
     );
   }
   
-  // Update the streak display
+  // Update displays
   $("streakCount").textContent = teams[currentTeamIndex].streak;
-  
-  // Re-render UI to show updated scores
   renderTeams();
   renderScoreboard();
   updateStats();
   
-  // After a short delay, load the next question
-  // CONCEPT: setTimeout(callback, milliseconds) runs code after a delay
-  //          1200 = 1.2 seconds, giving time to see feedback
+  // Next question after delay
+  // CONCEPT: setTimeout(callback, ms) runs callback after delay
   setTimeout(() => {
-    if (running) pickQuestion();  // Only if round is still active
+    if (running) pickQuestion();
   }, 1200);
 }
 
 
 /**
- * setFeedback() - Updates the feedback message displayed to users
- * 
- * @param {string} html - HTML string for the feedback message
- * @param {string} celebrate - Text for the celebration message
+ * setFeedback() - Updates feedback messages
  */
 function setFeedback(html, celebrate) {
-  $("feedback").innerHTML = html;         // Can contain HTML tags
-  $("celebrate").textContent = celebrate; // Plain text only
+  $("feedback").innerHTML = html;
+  $("celebrate").textContent = celebrate;
 }
 
 
 // ============================================================================
-// SECTION 8: ROUND MANAGEMENT - Starting, Stopping, and Ending Rounds
+// SECTION 8: ROUND MANAGEMENT
 // ============================================================================
-// Controls the timed gameplay rounds for each team
+// 
+// Controls timed gameplay rounds
+// 
 // ============================================================================
 
 /**
- * startRound() - Begins a timed round for the specified team
+ * startRound() - Begins timed round for a team
  * 
- * @param {number} idx - The index of the team starting their round (0-4)
- * 
- * CONCEPT: setInterval runs a function repeatedly at set intervals
- *          It returns an ID we save to stop it later with clearInterval
+ * @param {number} idx - Team index (0-4)
  */
 function startRound(idx) {
-  // Stop any currently running round first
-  stopRound();
+  stopRound();  // Stop any current round
   
-  // Set the current team
   currentTeamIndex = idx;
-  
-  // Update the display to show which team is playing
   $("currentGroupLabel").textContent = teams[idx].name;
   $("streakCount").textContent = teams[idx].streak;
   
-  // Get and validate the round time from the input
+  // Get and validate round time
   // CONCEPT: parseInt() converts string to integer
-  //          || 30 provides default if parseInt fails (returns NaN)
+  // CONCEPT: || 30 provides default if parseInt fails
   maxTime = parseInt($("roundTime").value) || 30;
-  
-  // Clamp time between 10 and 120 seconds
-  // CONCEPT: Math.max and Math.min limit a value to a range
-  maxTime = Math.max(10, Math.min(120, maxTime));
+  maxTime = Math.max(10, Math.min(120, maxTime));  // Clamp to range
   timeLeft = maxTime;
   
-  // Update timer display
   $("timeLeft").textContent = timeLeft;
   updateTimerBar();
   
-  // Set game state to running
   running = true;
-  questionCount = 0;  // Reset question count for this round
-  
-  // Re-render teams to show active state
+  questionCount = 0;
   renderTeams();
-  
-  // Load the first question
   pickQuestion();
   
-  // Start the countdown timer
-  // CONCEPT: setInterval(callback, interval) runs callback every interval ms
-  //          1000ms = 1 second
+  // Start countdown timer
+  // CONCEPT: setInterval(callback, ms) runs callback every ms
+  //          Returns ID to stop it later
   timer = setInterval(() => {
-    timeLeft--;  // Decrease time by 1
-    $("timeLeft").textContent = timeLeft;  // Update display
-    updateTimerBar();  // Update progress bar
+    timeLeft--;
+    $("timeLeft").textContent = timeLeft;
+    updateTimerBar();
     
-    // Check if time has run out
     if (timeLeft <= 0) {
       endRound();
     }
-  }, 1000);
+  }, 1000);  // 1000ms = 1 second
 }
 
 
 /**
- * updateTimerBar() - Updates the visual timer progress bar
- * 
- * Changes color based on remaining time:
- * - Green (>40%): Plenty of time
- * - Yellow (20-40%): Getting low
- * - Red (<20%): Almost out of time!
+ * updateTimerBar() - Updates visual progress bar
  */
 function updateTimerBar() {
   const bar = $("timerBar");
-  
-  // Calculate percentage of time remaining
   const percent = (timeLeft / maxTime) * 100;
   
-  // Set the width of the bar (CSS transition makes it smooth)
+  // Set width as percentage
   bar.style.width = percent + "%";
   
-  // Remove existing color classes
+  // Change color based on time remaining
   bar.classList.remove("warning", "danger");
-  
-  // Add appropriate color class based on time remaining
   if (percent <= 20) {
-    bar.classList.add("danger");   // Red - almost out of time!
+    bar.classList.add("danger");  // Red
   } else if (percent <= 40) {
-    bar.classList.add("warning");  // Yellow - getting low
+    bar.classList.add("warning"); // Yellow
   }
-  // If > 40%, no extra class needed (uses default green)
 }
 
 
 /**
- * endRound() - Called when time runs out, ends the current round
- * 
- * Displays final score and triggers celebration
+ * endRound() - Called when time runs out
  */
 function endRound() {
-  // Stop the game
   running = false;
-  
-  // Stop the timer
-  // CONCEPT: clearInterval(timerId) stops a setInterval that's running
-  clearInterval(timer);
+  clearInterval(timer);  // Stop the timer
   timer = null;
   
-  // Get the team that just finished
   const team = teams[currentTeamIndex];
-  
-  // Add animation class to quiz card
   $("quizCard").classList.add("round-end");
   
   // Disable all choice buttons
   $("choices").querySelectorAll("button").forEach(b => b.disabled = true);
   
-  // Show final score message
+  // Show final score
   $("qText").textContent = `⏱️ Time's up! ${team.name} scored ${team.score} points!`;
   setFeedback("", "Round Complete! 🎉");
   
-  // Big confetti celebration!
+  // Big confetti!
   createConfetti(30);
   
-  // Remove animation class after it completes
   setTimeout(() => {
     $("quizCard").classList.remove("round-end");
   }, 500);
@@ -737,32 +787,23 @@ function endRound() {
 
 
 /**
- * stopRound() - Immediately stops any running round
- * 
- * Used when starting a new round or resetting the game
+ * stopRound() - Immediately stops current round
  */
 function stopRound() {
   running = false;
-  clearInterval(timer);  // Stop the timer
-  timer = null;          // Clear the reference
+  clearInterval(timer);
+  timer = null;
 }
 
 
 /**
- * updateRoundTime() - Called when user changes the round time input
- * 
- * Only updates if a round isn't currently running
+ * updateRoundTime() - Updates time when input changes
  */
 function updateRoundTime() {
-  // Only allow changes when not actively playing
   if (!running) {
     const t = parseInt($("roundTime").value) || 30;
-    
-    // Clamp between 10 and 120 seconds
     maxTime = Math.max(10, Math.min(120, t));
     timeLeft = maxTime;
-    
-    // Update displays
     $("timeLeft").textContent = timeLeft;
     updateTimerBar();
   }
@@ -770,40 +811,33 @@ function updateRoundTime() {
 
 
 /**
- * resetAll() - Resets the entire game to initial state
- * 
- * Clears all scores, resets UI, ready for a fresh game
+ * resetAll() - Resets entire game to initial state
  */
 function resetAll() {
-  // Stop any running round
   stopRound();
   
-  // Reset state variables
   currentTeamIndex = null;
   questionCount = 0;
   totalCorrect = 0;
   totalAsked = 0;
   
-  // Reset all team scores and streaks
-  // CONCEPT: forEach to iterate and modify each team object
+  // Reset all team scores
   teams.forEach(t => {
     t.score = 0;
     t.streak = 0;
   });
   
-  // Reset UI displays
+  // Reset UI
   $("currentGroupLabel").textContent = "Select a team";
   $("streakCount").textContent = "0";
   $("qText").textContent = "👆 Pick a team to start the quiz!";
-  $("choices").innerHTML = "";  // Clear answer buttons
-  setFeedback("", "");          // Clear feedback
+  $("choices").innerHTML = "";
+  setFeedback("", "");
   
-  // Reset timer
   timeLeft = parseInt($("roundTime").value) || 30;
   $("timeLeft").textContent = timeLeft;
   updateTimerBar();
   
-  // Re-render everything
   renderTeams();
   renderScoreboard();
   updateStats();
@@ -811,84 +845,105 @@ function resetAll() {
 
 
 // ============================================================================
-// SECTION 9: VISUAL EFFECTS - Confetti Animation
+// SECTION 9: CONFETTI EFFECT
 // ============================================================================
-// Fun visual feedback when players get correct answers!
+// 
+// Creates fun visual celebration!
+// 
 // ============================================================================
 
 /**
- * createConfetti() - Creates falling confetti animation
+ * createConfetti() - Creates falling confetti pieces
  * 
- * @param {number} count - Number of confetti pieces to create
- * 
- * This demonstrates:
- * - Dynamic element creation
- * - Random values for variation
- * - CSS animations triggered by JavaScript
- * - Cleanup with setTimeout
+ * @param {number} count - Number of pieces to create
  */
 function createConfetti(count) {
-  // Get the container for confetti pieces
   const container = $("confetti");
-  
-  // Array of colors for confetti
   const colors = ["#6366f1", "#10b981", "#f59e0b", "#ef4444", "#ec4899", "#8b5cf6"];
   
-  // Create 'count' number of confetti pieces
+  // Create 'count' confetti pieces
   for (let i = 0; i < count; i++) {
-    // Create a div element for each confetti piece
     const confetti = document.createElement("div");
     confetti.className = "confetti";
     
-    // Randomize position (0-100% across screen)
-    // CONCEPT: Math.random() * 100 gives 0-99.99...
+    // Random position (0-100%)
     confetti.style.left = Math.random() * 100 + "%";
     
-    // Pick random color from array
-    // CONCEPT: Math.floor(Math.random() * array.length) gives random valid index
+    // Random color
     confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
     
-    // Random animation delay for staggered effect (0-0.5 seconds)
+    // Random animation delay (staggered effect)
     confetti.style.animationDelay = Math.random() * 0.5 + "s";
     
-    // Random size (5-15 pixels)
+    // Random size (5-15px)
     confetti.style.width = (Math.random() * 10 + 5) + "px";
     confetti.style.height = (Math.random() * 10 + 5) + "px";
     
-    // Randomly make circle or square
-    // CONCEPT: Ternary with Math.random() > 0.5 for 50/50 chance
+    // Random shape (circle or square)
     confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
     
-    // Add to container
     container.appendChild(confetti);
     
-    // Remove confetti piece after animation completes (3 seconds)
-    // CONCEPT: Arrow function () => confetti.remove() captures confetti variable
-    //          This is closure - the function "remembers" which confetti to remove
+    // Remove after animation (cleanup)
+    // CONCEPT: Closure - function remembers 'confetti' variable
     setTimeout(() => confetti.remove(), 3000);
   }
 }
 
 
 // ============================================================================
-// END OF FILE
+// JAVASCRIPT CONCEPTS SUMMARY
 // ============================================================================
 // 
-// KEY JAVASCRIPT CONCEPTS DEMONSTRATED:
+// VARIABLES:
+// - const: Cannot be reassigned
+// - let: Can be reassigned
 // 
-// 1. Variables: const (can't reassign), let (can reassign)
-// 2. Data Types: strings, numbers, booleans, null, objects, arrays
-// 3. Objects: { key: value } - store related data together
-// 4. Arrays: [item1, item2] - ordered lists of items
-// 5. Functions: Reusable blocks of code
-// 6. Arrow Functions: Shorter syntax for functions
-// 7. DOM Manipulation: Getting and changing HTML elements
-// 8. Event Listeners: Responding to user actions (clicks, etc.)
-// 9. Timers: setInterval (repeat), setTimeout (delay)
-// 10. Array Methods: forEach, map, sort, filter, includes
-// 11. Template Literals: `string with ${variables}`
-// 12. Ternary Operator: condition ? ifTrue : ifFalse
-// 13. Closures: Functions that remember their outer scope
-// 14. Spread Operator: [...array] to copy/expand arrays
+// DATA TYPES:
+// - String: "hello" or 'hello'
+// - Number: 42, 3.14
+// - Boolean: true, false
+// - Array: [1, 2, 3]
+// - Object: { key: value }
+// - null: Intentionally empty
+// - undefined: Not assigned
+// 
+// FUNCTIONS:
+// - Regular: function name(params) { }
+// - Arrow: (params) => expression
+// - Callback: Function passed to another function
+// 
+// DOM METHODS:
+// - getElementById(): Select by ID
+// - querySelector(): Select by CSS selector
+// - createElement(): Create new element
+// - appendChild(): Add child element
+// - innerHTML: Set HTML content
+// - textContent: Set text content
+// - classList.add/remove(): Modify CSS classes
+// 
+// EVENTS:
+// - addEventListener(event, callback)
+// - Common events: click, change, submit, load
+// 
+// ARRAY METHODS:
+// - forEach(): Loop through items
+// - map(): Transform items
+// - filter(): Filter items
+// - sort(): Reorder items
+// - push(): Add to end
+// - includes(): Check if contains
+// 
+// TIMERS:
+// - setTimeout(callback, ms): Run once after delay
+// - setInterval(callback, ms): Run repeatedly
+// - clearInterval(id): Stop interval
+// 
+// OPERATORS:
+// - === : Strict equality
+// - !== : Strict inequality
+// - && : AND
+// - || : OR
+// - ? : : Ternary (condition ? ifTrue : ifFalse)
 // 
 // ============================================================================
